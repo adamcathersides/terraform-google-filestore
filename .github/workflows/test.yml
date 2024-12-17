@@ -1,0 +1,22 @@
+name: "Test"
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.0"
+
+      - run: terraform fmt -check
+
+      - run: terraform init
+
+      - run: terraform test
