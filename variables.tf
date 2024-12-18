@@ -1,3 +1,8 @@
+variable "location" {
+  description = "Google Filestore instance location (zone, region)"
+  type        = string
+}
+
 variable "name" {
   description = "Google Filestore instance name"
   type        = string
@@ -86,4 +91,34 @@ variable "performance_config" {
     }))
   })
   default = null
+}
+
+variable "enable_auto_backup" {
+  description = "Google Filestore instance auto backup switch."
+  type        = bool
+  default     = false
+}
+
+variable "auto_backup_schedule" {
+  description = "Google Cloud Scheduler job schedule (cron) for Google Filestore instance auto backup."
+  type        = string
+  default     = "0 0 * * *"
+}
+
+variable "auto_backup_time_zone" {
+  description = "Google Cloud Scheduler job time zone for Google Filestore instance auto backup."
+  type        = string
+  default     = "Etc/UTC"
+}
+
+variable "auto_backup_function_location" {
+  description = "Google Cloud Run Function location (region) for Google Filestore instance auto backup."
+  type        = string
+  default     = null
+}
+
+variable "auto_backup_function_storage_bucket_name" {
+  description = "Google Cloud Storage bucket name for Filestore automatic backup retention days."
+  type        = string
+  default     = null
 }

@@ -1,7 +1,9 @@
-mock_provider "google" {}
+# mock_provider "google" {}
 
 run "basic" {
   variables {
+    location = "us-central1-a"
+
     name = "basic"
     tier = "STANDARD"
 

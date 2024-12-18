@@ -1,5 +1,8 @@
+# tflint:ignore:terraform-required-version
 module "example" {
   source = "../"
+
+  location = "us-central1-a"
 
   name        = "example"
   description = "Managed by Terraform Test"
@@ -33,14 +36,18 @@ module "example" {
     reserved_ip_range = "10.10.0.0/24"
   }
 
-  kms_key_name = "projects/test/locations/global/keyRings/test/cryptoKeys/test"
+  # kms_key_name = "projects/test/locations/global/keyRings/test/cryptoKeys/test"
+  #
+  # deletion_protection_enabled = true
+  # deletion_protection_reason  = "VIP"
+  #
+  # performance_config = {
+  #   iops_per_tb = {
+  #     max_iops_per_tb = 1000
+  #   }
+  # }
 
-  deletion_protection_enabled = true
-  deletion_protection_reason  = "VIP"
-
-  performance_config = {
-    iops_per_tb = {
-      max_iops_per_tb = 1000
-    }
-  }
+  enable_auto_backup                       = true
+  auto_backup_function_location            = "us-central1"
+  auto_backup_function_storage_bucket_name = "gcf-v2-sources-112233445566-us-central1"
 }

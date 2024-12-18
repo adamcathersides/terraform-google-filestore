@@ -1,7 +1,9 @@
-mock_provider "google" {}
+# mock_provider "google" {}
 
 run "advanced" {
   variables {
+    location = "us-central1-a"
+
     name        = "advanced"
     description = "Managed by Terraform Test"
     tier        = "ZONAL"
