@@ -59,12 +59,13 @@ Check out comprehensive examples in [`test`](./test) folder.
 
 * [x] Auto (scheduled) backups. Unfortunately Google doesn't support automatic Filestore instance backup out-of-the box
 ([Google Issue Tracker](https://issuetracker.google.com/issues?q=filestore%20backup)). This module provides this functionality with Cloud Scheduler and Workflow services workaround
-([Scheduling backups](https://cloud.google.com/filestore/docs/scheduling-backups). Check out requirements section for more information.
+([Scheduling backups](https://cloud.google.com/filestore/docs/scheduling-backups)). Check out requirements section for more information.
 
 ![Filestore Auto Backup](filestore-auto-backup.png)
 
 > [!WARNING]
 > This module doesn't implement backups cleanup.
+> The easiest way to implement it at storage level with [Google Cloud Storage Object Lifecycle Management](https://cloud.google.com/storage/docs/lifecycle) feature.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
