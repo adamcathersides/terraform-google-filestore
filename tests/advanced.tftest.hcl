@@ -1,5 +1,3 @@
-# mock_provider "google" {}
-
 run "advanced" {
   variables {
     location = "us-central1-a"
