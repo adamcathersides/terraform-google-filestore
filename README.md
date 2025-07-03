@@ -109,7 +109,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_auto_backup_function_location"></a> [auto\_backup\_function\_location](#input\_auto\_backup\_function\_location) | Google Cloud Run Function location (region) for Google Filestore instance auto backup. | `string` | `null` | no |
-| <a name="input_auto_backup_function_storage_bucket_name"></a> [auto\_backup\_function\_storage\_bucket\_name](#input\_auto\_backup\_function\_storage\_bucket\_name) | Google Cloud Storage bucket name for Filestore automatic backup retention days. | `string` | `null` | no |
+| <a name="input_auto_backup_function_storage_bucket_name"></a> [auto\_backup\_function\_storage\_bucket\_name](#input\_auto\_backup\_function\_storage\_bucket\_name) | Google Cloud Run Function source bucket name for Filestore instance auto backup. | `string` | `null` | no |
 | <a name="input_auto_backup_schedule"></a> [auto\_backup\_schedule](#input\_auto\_backup\_schedule) | Google Cloud Scheduler job schedule (cron) for Google Filestore instance auto backup. | `string` | `"0 0 * * *"` | no |
 | <a name="input_auto_backup_time_zone"></a> [auto\_backup\_time\_zone](#input\_auto\_backup\_time\_zone) | Google Cloud Scheduler job time zone for Google Filestore instance auto backup. | `string` | `"Etc/UTC"` | no |
 | <a name="input_deletion_protection_enabled"></a> [deletion\_protection\_enabled](#input\_deletion\_protection\_enabled) | Google Filestore instance data deletion protection switch. | `bool` | `false` | no |

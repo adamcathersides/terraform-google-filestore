@@ -118,7 +118,7 @@ variable "auto_backup_function_location" {
 }
 
 variable "auto_backup_function_storage_bucket_name" {
-  description = "Google Cloud Storage bucket name for Filestore automatic backup retention days."
+  description = "Google Cloud Run Function source bucket name for Filestore instance auto backup."
   type        = string
   default     = null
 }
