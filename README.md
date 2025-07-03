@@ -155,7 +155,11 @@ A project with the following APIs enabled must be used to host the resources of 
 * Google Filestore API: `file.googleapis.com`
 
 The [Project Factory module](https://registry.terraform.io/modules/terraform-google-modules/project-factory/google) can
-be used to provision a project with the necessary APIs enabled.
+be used to provision a project with the necessary APIs enabled. Alternatively, the APIs can be enabled via CLI:
+
+```shell
+gcloud services enable file.googleapis.com
+```
 
 #### Backup
 
@@ -174,10 +178,15 @@ This project uses [conventional commits](https://www.conventionalcommits.org/en/
 
 ### Prerequisites
 
-#### MacOS
+* [`terraform`](https://www.terraform.io/downloads.html)
+* [`gcloud`](https://cloud.google.com/sdk/gcloud/reference/)
+* [`pre-commit`](https://pre-commit.com/)
+* [`terraform-docs`](https://terraform-docs.io/)
+* [`tflint`](https://github.com/terraform-linters/tflint)
+
+#### Pre-Commit Hooks Installation
 
 ```shell
-brew install pre-commit tfswitch terraform-docs tflint
 pre-commit install --install-hooks
 ```
 
@@ -186,8 +195,8 @@ pre-commit install --install-hooks
 ```shell
 gcloud auth application-default login --project=terraform-test
 export GOOGLE_PROJECT=terraform-test
-export GOOGLE_REGION=us-central1
-export GOOGLE_ZONE=us-central1-a
+export GOOGLE_REGION=europe-west2
+export GOOGLE_ZONE=europe-west2-a
 ```
 
 ### Development & Testing
