@@ -70,7 +70,7 @@ variable "kms_key_name" {
 
 variable "deletion_protection_enabled" {
   description = "Google Filestore instance data deletion protection switch."
-  type        = string
+  type        = bool
   default     = false
 }
 
