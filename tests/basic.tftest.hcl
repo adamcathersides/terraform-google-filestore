@@ -1,6 +1,6 @@
 run "basic" {
   variables {
-    location = "us-central1-a"
+    location = "europe-west2-a"
 
     name = "basic"
     tier = "STANDARD"

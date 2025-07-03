@@ -1,6 +1,6 @@
 run "advanced" {
   variables {
-    location = "us-central1-a"
+    location = "europe-west2-a"
 
     name        = "advanced"
     description = "Managed by Terraform Test"

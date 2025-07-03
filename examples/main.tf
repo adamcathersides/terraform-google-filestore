@@ -2,7 +2,7 @@
 module "example" {
   source = "../"
 
-  location = "us-central1-a"
+  location = "europe-west2-a"
 
   name        = "example"
   description = "Managed by Terraform Test"

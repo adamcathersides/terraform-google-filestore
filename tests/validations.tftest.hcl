@@ -1,6 +1,8 @@
 mock_provider "google" {}
 
 variables {
+  location = "europe-west2-a"
+
   name = "basic"
   tier = "STANDARD"
 
