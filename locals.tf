@@ -1,5 +1,5 @@
 locals {
-  project_id     = data.google_client_config.current[0].project
-  project_number = data.google_project.current[0].number
-  region         = data.google_client_config.current[0].region
+  project_id     = var.enable_auto_backup ? data.google_client_config.current[0].project : null
+  project_number = var.enable_auto_backup ? data.google_project.current[0].number : null
+  region         = var.enable_auto_backup ? data.google_client_config.current[0].region : null
 }
