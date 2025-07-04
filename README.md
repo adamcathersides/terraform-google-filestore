@@ -61,7 +61,7 @@ Check out comprehensive examples in [`tests`](./tests) folder.
 ([Google Issue Tracker](https://issuetracker.google.com/issues?q=filestore%20backup)). This module provides this functionality with Cloud Scheduler and Workflow services workaround
 ([Scheduling backups](https://cloud.google.com/filestore/docs/scheduling-backups)). Check out requirements section for more information.
 
-![Filestore Auto Backup](filestore-auto-backup.png)
+![Filestore Auto Backup](https://raw.githubusercontent.com/Tensho/terraform-google-filestore/refs/heads/main/filestore-auto-backup.png)
 
 > [!WARNING]
 > This module doesn't implement backups cleanup.
