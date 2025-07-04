@@ -9,7 +9,7 @@ module "example" {
   source  = "Tensho/filestore/google"
   version = "1.1.1"
 
-  name = "Example"
+  name        = "Example"
   description = "Managed by Terraform Test"
   tier        = "STANDARD"
   protocol    = "NFS_V3"
@@ -20,12 +20,12 @@ module "example" {
   
     nfs_export_options = [
       {
-        ip_ranges = ["10.0.0.0/24"]
+        ip_ranges   = ["10.0.0.0/24"]
         access_mode = "READ_WRITE"
         squash_mode = "NO_ROOT_SQUASH"
       },
       {
-        ip_ranges = ["10.10.0.0/24"]
+        ip_ranges   = ["10.10.0.0/24"]
         access_mode = "READ_ONLY"
         squash_mode = "ROOT_SQUASH"
         anon_uid    = 123
@@ -35,9 +35,9 @@ module "example" {
   }
   
   networks = {
-    network           = "default"
-    modes             = ["MODE_IPV4"]
-    connect_mode      = "DIRECT_PEERING"
+    network      = "default"
+    modes        = ["MODE_IPV4"]
+    connect_mode = "DIRECT_PEERING"
   }
   
   kms_key_name = "projects/example/locations/global/keyRings/example/cryptoKeys/example"
