@@ -48,6 +48,6 @@ module "example" {
   # }
 
   enable_auto_backup                       = true
-  auto_backup_function_location            = "us-central1"
+  auto_backup_function_location            = "europe-west2"
   auto_backup_function_storage_bucket_name = "gcf-v2-sources-112233445566-us-central1"
 }
