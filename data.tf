@@ -1,10 +1,7 @@
 data "google_client_config" "current" {
-  # count = var.enable_auto_backup ? 1 : 0
 }
 
 data "google_project" "current" {
-  # count = var.enable_auto_backup ? 1 : 0
-
   project_id = data.google_client_config.current.project
 }
 
