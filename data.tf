@@ -5,7 +5,7 @@ data "google_client_config" "current" {
 data "google_project" "current" {
   # count = var.enable_auto_backup ? 1 : 0
 
-  project_id = data.google_client_config.current[0].project
+  project_id = data.google_client_config.current.project
 }
 
 data "archive_file" "backup_function" {
