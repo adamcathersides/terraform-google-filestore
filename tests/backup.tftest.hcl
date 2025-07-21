@@ -19,7 +19,7 @@ run "basic" {
 
     enable_auto_backup                       = true
     auto_backup_function_location            = "europe-west2"
-    auto_backup_function_storage_bucket_name = "gcf-v2-sources-461567143261-us-central1"
+    auto_backup_function_storage_bucket_name = "gcf-v2-sources-461567143261-europe-west2"
   }
 
   assert {
