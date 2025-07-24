@@ -151,7 +151,7 @@ resource "google_cloudfunctions2_function" "backup" {
 
   service_config {
     max_instance_count    = 1
-    available_memory      = "256Mi"
+    available_memory      = var.auto_backup_function_mem
     timeout_seconds       = 60
     service_account_email = google_service_account.filestore_backup_runner[0].email
 

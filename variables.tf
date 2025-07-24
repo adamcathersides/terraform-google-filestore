@@ -117,6 +117,12 @@ variable "auto_backup_function_location" {
   default     = null
 }
 
+variable "auto_backup_function_location" {
+  description = "Ammount of memory allocated to the autobackup function"
+  type        = string
+  default     = "512Mi" 
+}
+
 variable "auto_backup_function_storage_bucket_name" {
   description = "Google Cloud Run Function source bucket name for Filestore instance auto backup."
   type        = string
