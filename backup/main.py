@@ -82,7 +82,7 @@ def create_backup(request):
     The main CloudFunction entrypoint. 
     """
     backup_id = get_backup_id()
-    trigger_run_url = f"https://file.googleapis.com/v1/projects/{PROJECT_ID}/locations/{BACKUP_REGION}/backups?backupId={backup_id}"
+    backups_url = f"https://file.googleapis.com/v1/projects/{PROJECT_ID}/locations/{BACKUP_REGION}/backups?backupId={backup_id}"
     headers = {'Content-Type': 'application/json'}
     post_data = {
         "description": "Filestore auto backup managed by Cloud Run Function",
