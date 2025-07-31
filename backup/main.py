@@ -1,12 +1,12 @@
 import google.auth
-import google.auth.transport.requests
+import google.auth.transport.requests as google_auth_requests 
 import time
 import requests
 import json
 import os
 import logging
 from datetime import datetime
-from google.auth.transport.requests import AuthorizedSession
+# from google.auth.transport.requests import AuthorizedSession
 from google.cloud import logging as cloud_logging
 
 
@@ -26,9 +26,9 @@ BACKUP_RETENTION = int(os.environ.get("BACKUP_RETENTION", 0))
 
 try:
     credentials, project = google.auth.default()
-    request = google.auth.transport.requests.Request()
+    request = google_auth_requests.Request()
     credentials.refresh(request)
-    authed_session = AuthorizedSession(credentials)
+    session = google_auth_requests.AuthorizedSession(credentials)
 except Exception as e:
     logger.exception("Failed to authenticate with Google Cloud.")
     raise
@@ -54,7 +54,7 @@ def cleanup_old_backups(request, number_to_keep):
 
     try:
         logger.info(f"Fetching backups from {backups_url}")
-        r = authed_session.get(url=backups_url, headers=headers)
+        r = session.get(url=backups_url, headers=headers)
         r.raise_for_status()
         data = r.json()
         backups = data.get("backups", [])
@@ -73,7 +73,7 @@ def cleanup_old_backups(request, number_to_keep):
         for backup in sorted_backups[number_to_keep:]:
             delete_url = f"https://file.googleapis.com/v1/{backup['name']}"
             logger.info(f"Deleting backup: {backup['name']}")
-            r = authed_session.delete(url=delete_url, headers=headers)
+            r = session.delete(url=delete_url, headers=headers)
             if r.status_code == requests.codes.ok:
                 logger.info(f"Backup '{backup['name']}' deleted successfully.")
             else:
@@ -98,7 +98,7 @@ def create_backup(request):
 
     try:
         logger.info(f"Triggering backup creation: {backup_id}")
-        r = authed_session.post(url=trigger_run_url, headers=headers, data=json.dumps(post_data))
+        r = session.post(url=trigger_run_url, headers=headers, data=json.dumps(post_data))
         if r.status_code == requests.codes.ok:
             logger.info("Backup successfully initiated.")
         else:
