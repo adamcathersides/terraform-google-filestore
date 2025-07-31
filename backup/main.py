@@ -1,4 +1,4 @@
-import google.auth.default
+import google.auth
 import google.auth.transport.requests as google_auth_requests 
 import time
 import requests
