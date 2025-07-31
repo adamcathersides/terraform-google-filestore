@@ -63,6 +63,9 @@ Check out comprehensive examples in [`tests`](./tests) folder.
 
 ![Filestore Auto Backup](https://raw.githubusercontent.com/Tensho/terraform-google-filestore/refs/heads/main/filestore-auto-backup.png)
 
+> [!NOTE]
+> Backup retention/deletion is included as part of the automatic backup script (Cloud Function).
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
