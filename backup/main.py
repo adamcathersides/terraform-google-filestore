@@ -1,12 +1,10 @@
 import google.auth
-import google.auth.transport.requests as google_auth_requests 
 import time
 import requests
 import json
 import os
 import logging
 from datetime import datetime
-# from google.auth.transport.requests import AuthorizedSession
 from google.cloud import logging as cloud_logging
 
 
@@ -26,9 +24,9 @@ BACKUP_RETENTION = int(os.environ.get("BACKUP_RETENTION", 0))
 
 try:
     credentials, project = google.auth.default()
-    request = google_auth_requests.Request()
+    request = google.auth.transport.requests.Request()
     credentials.refresh(request)
-    session = google_auth_requests.AuthorizedSession(credentials)
+    session = google.auth.transport.requests.AuthorizedSession(credentials)
 except Exception as e:
     logger.exception("Failed to authenticate with Google Cloud.")
     raise
