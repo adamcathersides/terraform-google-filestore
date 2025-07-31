@@ -72,13 +72,9 @@ def cleanup_old_backups(request, number_to_keep):
             delete_url = f"https://file.googleapis.com/v1/{backup['name']}"
             logger.info(f"Deleting backup: {backup['name']}")
             r = session.delete(url=delete_url, headers=headers)
-            if r.status_code == requests.codes.ok:
-                logger.info(f"Backup '{backup['name']}' deleted successfully.")
-            else:
-                logger.error(f"Failed to delete backup '{backup['name']}': {r.text}")
-                r.raise_for_status()
+            r.raise_for_status()
     except Exception as e:
-        logger.exception("Error during backup cleanup.")
+        logger.exception(f"Error during backup cleanup: {e}")
         raise
 
 def create_backup(request):
@@ -98,19 +94,17 @@ def create_backup(request):
         logger.info(f"Triggering backup creation: {backup_id}")
         r = session.post(url=trigger_run_url, headers=headers, data=json.dumps(post_data))
         if r.status_code == requests.codes.ok:
-            logger.info("Backup successfully initiated.")
-        else:
-            logger.error(f"Backup creation failed: {r.text}")
-            r.raise_for_status()
+        logger.info("Backup successfully initiated.")
+        r.raise_for_status()
     except Exception as e:
-        logger.exception("Error while creating backup.")
+        logger.exception(f"Error while creating backup: {e}")
         raise
 
     if BACKUP_RETENTION > 0: # Retain all backups if set to 0
         try:
             logger.info(f"Cleaning up old backups. Retaining latest {BACKUP_RETENTION}.")
             cleanup_old_backups(request, BACKUP_RETENTION)
-            return json.dumps({"status": "Backup started. Cleanup complete."})
+            return json.dumps({"status": "Backup started. Cleanup started."})
         except Exception as e:
             logger.warning("Backup started, but cleanup failed.")
             return json.dumps({"status": "Backup started. Cleanup failed.", "error": str(e)})
